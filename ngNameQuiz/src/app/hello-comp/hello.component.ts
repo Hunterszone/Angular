@@ -77,7 +77,7 @@ export class HelloComponent  {
     this.names.pop();
     if(this.names.length == 0){
         this.clickMessage = '';
-        this.name = '';
+        this.name = 'Unknown';
     }
    this.currentState = 'final';
       
