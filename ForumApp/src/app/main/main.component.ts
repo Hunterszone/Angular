@@ -3,12 +3,12 @@ import { CreatePostComponent } from '../create-post/create-post.component';
 import { UpdatePostComponent } from '../update-post/update-post.component';
 import { DeletePostComponent } from '../delete-post/delete-post.component';
 import { CommentPostComponent } from '../comment-post/comment-post.component';
-import { interval, Observable, Observer } from 'rxjs';
+import { interval, timer, Observable, Observer } from 'rxjs';
 import {CreateService} from '../create.service';
 import { DeleteService } from '../delete.service';
 import {CommentService} from '../comment.service';
 import {UpdateService} from '../update.service';
-import { takeWhile } from 'rxjs/operators';
+import { takeWhile, takeUntil } from 'rxjs/operators';
 
 
 @Component({
