@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CreatePostComponent } from '../create-post/create-post.component';
 import { UpdatePostComponent } from '../update-post/update-post.component';
 import { DeletePostComponent } from '../delete-post/delete-post.component';
@@ -8,6 +8,8 @@ import {CreateService} from '../create.service';
 import { DeleteService } from '../delete.service';
 import {CommentService} from '../comment.service';
 import {UpdateService} from '../update.service';
+import { takeWhile } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-main',
@@ -15,8 +17,8 @@ import {UpdateService} from '../update.service';
   styleUrls: ['./main.component.sass']
 })
 
-export class MainComponent implements OnInit {
-
+export class MainComponent implements OnInit, OnDestroy {
+	
   constructor() {}
 
   getCreatePostComponent(): CreatePostComponent{
@@ -37,30 +39,77 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const myObserv = interval(1000);
-    // myObserv.subscribe((number: number)=>{
-    //     console.log(number);
-    // });
+    const myObserv = interval(1000);
+    myObserv.subscribe((number: number)=>{
+         console.log(number);
+		 if(number == 5){
+			console.log("Execution stopped!");
+			observer.complete(); //breaks the execution and changes the inner state
+		 }
+    });
 
-    const mainObserver = Observable.create((observer: Observer)=>{
+    const mainObserver = Observable.create((observer)=>{
         setTimeout(()=>{
           observer.next('fist package')
-        }, 2000)
+        }, 1500)
         setTimeout(()=>{
           observer.next('second package')
-        }, 4000)
-        setTimeout(()=>{
-          observer.complete() //breaks the execution
-        },5000)
+        }, 2500)
+		setTimeout(()=>{
+          observer.next('second package')
+        }, 3500)
         setTimeout(()=>{
           observer.error('Too bad!')
-        }, 6000)
+		  //console.log('Too bad!');
+        }, 4000)
     });
     mainObserver.subscribe(
       (data: string)=>{console.log("Data delivered!")},
       (error: string)=>{console.log("Failed to deliver!")},
     );
   }
+  
+  //Variant 2. Observable + subscribe + complete:
+  /*
+	  count: number;
+  counter: Observable<number>;
 
+  private alive = true;
 
+  ngOnInit() {
+    console.log('[takeWhile] ngOnInit');
+
+    this.counter = new Observable<number>(observer => {
+      console.log('[takeWhile] Subscribed');
+
+      let index = -1;
+      const interval = setInterval(() => {
+        index++;
+        console.log(`[takeWhile] next: ${index}`);
+        observer.next(index);
+		if(index == 10)
+			observer.complete();
+      }, 1000);
+	  
+      // teardown
+      return () => {
+        console.log('[takeWhile] Teardown');
+        clearInterval(interval);
+      }
+    });
+
+    this.counter
+    .pipe(takeWhile(() => this.alive))
+    .subscribe(
+      (value) => this.count = value,
+      (error) => console.error(error),
+      () => console.log('[takeWhile] complete')
+    );
+  }
+
+  ngOnDestroy() {
+		console.log('[takeWhile] ngOnDestory');
+		this.alive = false;
+  }
+  */
 }
