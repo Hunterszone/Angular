@@ -58,7 +58,8 @@ export class HelloComponent  {
   }
   
   printName() {
-    this.clickMessage = this.name.toUpperCase() + ' was added !';
+    if(this.names.length != 0)
+      this.clickMessage = this.name.toUpperCase() + ' was added !';
   }
 
   addName(newName: string) {
@@ -85,9 +86,13 @@ export class HelloComponent  {
 
   @Input() name: string;
   @Output() nameChange = new EventEmitter<string>();
-  changeName(){
+  shuffleNames(){
     if(this.name != '')
       this.name = this.names[Math.floor(Math.random()*this.names.length)];
+    if(this.names.length == 0){
+        this.clickMessage = '';
+        this.name = 'Unknown';
+    }
     this.printName();
     //this.nameChange.emit(this.name);
     // console.log(this.nameChange.emit(this.name));
