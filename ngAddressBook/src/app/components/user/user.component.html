@@ -1,0 +1,51 @@
+<h1>Hello, {{firstName}} {{lastName}}</h1>
+<ul>
+    <li><b>Age:</b> {{age}}</li>
+    <li><b>Email:</b> {{email}}</li>
+    <li><b>Location:</b> {{address.street}}, {{address.city}}, {{address.country}}</li>
+</ul>
+<h1>Edit user</h1>
+<form>
+    <div>
+        <label for="firstName">First name: </label><br>
+        <input type="text" [(ngModel)]="firstName" name="firstName">
+    </div>
+    <div>
+        <label for="lastName">Last name: </label><br>
+        <input type="text" [(ngModel)]="lastName" name="lastName">
+    </div>
+    <div>
+        <label for="age">Age: </label><br>
+        <input type="number" [(ngModel)]="age" name="age">
+    </div>
+    <div>
+        <label for="email">Email: </label><br>
+        <input type="text" [(ngModel)]="email" name="email">
+    </div>
+    <div>
+        <label for="street">Street: </label><br>
+        <input type="text" [(ngModel)]="address.street" name="address.street">
+    </div>
+    <div>
+        <label for="city">City: </label><br>
+        <input type="text" [(ngModel)]="address.city" name="address.city">
+    </div>
+    <div>
+        <label for="country">Country: </label><br>
+        <input type="text" [(ngModel)]="address.country" name="address.country">
+    </div>
+</form>
+
+<h1>Add hobbies</h1>
+<form (submit) = "addHobby(hobby.value)">
+    <div>
+        <label for="hobby">Hobby: </label>
+        <input type="text" #hobby>
+        <button type="button" class="btn btn-primary" (click)="addHobby(hobby.value)">Add</button>
+        <ul>
+            <li *ngFor="let hobby of hobbies; let i = index">
+                {{i+1}}: {{hobby}} <button (click)="deleteHobby(hobby)">X</button>
+            </li>
+        </ul>        
+    </div>
+</form>
