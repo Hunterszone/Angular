@@ -1,0 +1,35 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+<div class="enjoy-css">
+  <h1>
+    Welcome to {{ title }}!
+	
+  </h1>
+  
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+ 
+	<fieldset>
+
+	<p><legend><font face="algerian"><font size="4"><font color="yellow"><u>Write a post:</u></font></font></font></legend></p>
+    <textarea  name="comment" cols="55" rows="16" maxlength="400" placeholder="UP TO 400 CHARACTERS" ngModel></textarea>
+	<!--(click)="printSmth()"--><p><button name="comment">Submit</button>
+    <input type='reset' value='Clear form' style="cursor: pointer;">
+	  	  
+    </fieldset>
+		
+</form>
+
+<form #a="ngForm" (ngSubmit)="onReply(a)" novalidate>
+<fieldset>
+<p><legend><font face="algerian"><font size="4"><font color="yellow"><u>Topic Feed:</u></font></font></font></legend></p>
+<textarea cols="45" rows="5">{{ message | json }}</textarea>
+<!--(click)="printSmth()"--><p><button name="comment">Comment</button>
+</fieldset>
+</form>
+
+<div [innerHtml]="htmlToAdd | commentValid" *ngFor = "let element of CommentsArray"></div>
+
+<p id="d1"></p>
+
+<app-main></app-main>
+<router-outlet></router-outlet>
