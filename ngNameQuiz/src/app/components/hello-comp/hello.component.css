@@ -1,0 +1,15 @@
+div#centered {
+  text-align: center;
+}
+
+div#bordered {
+  border: 2px solid;
+}
+
+#inputf {
+    border-radius: 25px;
+    border: 2px solid #609;
+    padding: 20px; 
+    width: 200px;
+    height: 15px;    
+}

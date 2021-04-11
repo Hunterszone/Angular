@@ -6,8 +6,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello-comp/hello.component';
-import { RainbowDirective } from './hello-comp/rainbow.directive';
+import { HelloComponent } from './components/hello-comp/hello.component';
+import { RainbowDirective } from './components/hello-comp/rainbow.directive';
 
 @NgModule({
   imports:      [ BrowserModule , FormsModule, BrowserAnimationsModule ],
