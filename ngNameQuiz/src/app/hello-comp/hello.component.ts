@@ -52,7 +52,10 @@ export class HelloComponent  {
   clickMessage = '';
   names = [];
   currentState = 'initial';
-
+  isDescending = true;
+  ascending = 'Ascending: ';
+  descending = 'Decending: ';
+  
   changeState() {
     this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
   }
@@ -71,6 +74,19 @@ export class HelloComponent  {
     else
       alert(this.name.toUpperCase() + " already added!");
     this.currentState = 'final';
+  }
+
+  sortAscDesc(){
+    if(this.isDescending){
+      this.names.sort((a,b) => 0 - (a > b ? 1 : -1));
+      this.clickMessage = this.descending + this.names;
+      this.isDescending = false;
+    }
+    else{
+      this.names.sort((a,b) => 0 - (a < b ? 1 : -1));
+      this.clickMessage = this.ascending + this.names;
+      this.isDescending = true;
+    }
   }
 
   removeName(newName: string) {

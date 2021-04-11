@@ -7,10 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello-comp/hello.component';
+import { RainbowDirective } from './hello-comp/rainbow.directive';
 
 @NgModule({
   imports:      [ BrowserModule , FormsModule, BrowserAnimationsModule ],
-  declarations: [ AppComponent, HelloComponent],
+  declarations: [ AppComponent, HelloComponent, RainbowDirective],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
