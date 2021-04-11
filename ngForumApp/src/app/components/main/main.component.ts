@@ -2,12 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CreatePostComponent } from '../create-post/create-post.component';
 import { UpdatePostComponent } from '../update-post/update-post.component';
 import { DeletePostComponent } from '../delete-post/delete-post.component';
-import { CommentPostComponent } from '../../comment-post/comment-post.component';
+import { CommentPostComponent } from '../comment-post/comment-post.component';
 import { interval, timer, Observable, Observer } from 'rxjs';
-import {CreateService} from '../../create.service';
-import { DeleteService } from '../../delete.service';
-import {CommentService} from '../../comment.service';
-import {UpdateService} from '../../update.service';
+import {CreateService} from '../../services/create-service/create.service';
+import { DeleteService } from '../../services/delete-service/delete.service';
+import {CommentService} from '../../services/comment-service/comment.service';
+import {UpdateService} from '../../services/update-service/update.service';
 import { takeWhile, takeUntil } from 'rxjs/operators';
 
 

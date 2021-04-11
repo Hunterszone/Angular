@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DeleteService} from '../../delete.service';
+import {DeleteService} from '../../services/delete-service/delete.service';
 
 @Component({
   selector: 'app-delete-post',

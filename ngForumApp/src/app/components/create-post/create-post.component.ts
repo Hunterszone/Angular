@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CreateService} from '../../create.service';
+import {CreateService} from '../../services/create-service/create.service';
 
 @Component({
   selector: 'app-create-post',

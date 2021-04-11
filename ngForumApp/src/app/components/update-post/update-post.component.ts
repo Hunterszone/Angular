@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UpdateService} from '../../update.service';
+import {UpdateService} from '../../services/update-service/update.service';
 
 @Component({
   selector: 'app-update-post',
