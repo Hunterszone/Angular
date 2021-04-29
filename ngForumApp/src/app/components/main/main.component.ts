@@ -44,7 +44,7 @@ export class MainComponent implements OnInit, OnDestroy {
          console.log(number);
 		 if(number == 5){
 			console.log("Execution stopped!");
-			observer.complete(); //breaks the execution and changes the inner state
+			// observer.complete(); //breaks the execution and changes the inner state
 		 }
     });
 
